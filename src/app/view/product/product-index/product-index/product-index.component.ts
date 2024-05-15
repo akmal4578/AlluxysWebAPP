@@ -1,116 +1,63 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router'; 
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-  path: string;
-}
-
-export const ELEMENT_DATA: PeriodicElement[] = [
-  {
-    position: 50, 
-    name: 'Zakwan', 
-    weight: 1.79, 
-    symbol: 'H',
-    path: '/productDetail'
-  },
-  {
-    position: 100, 
-    name: 'Hydrogen', 
-    weight: 1.0079, 
-    symbol: 'H',
-    path: '/productDetail'
-  },
-  {
-    position: 2, 
-    name: 'Helium', 
-    weight: 4.0026, 
-    symbol: 'He',
-    path: '/productDetail'
-  },
-  {
-    position: 1, 
-    name: 'Hydrogen', 
-    weight: 1.0079, 
-    symbol: 'H',
-    path: '/productDetail'
-  },
-  {
-    position: 2, 
-    name: 'Helium', 
-    weight: 4.0026, 
-    symbol: 'He',
-    path: '/productDetail'
-  },
-  {
-    position: 1, 
-    name: 'Hydrogen', 
-    weight: 1.0079, 
-    symbol: 'H',
-    path: '/productDetail'
-  },
-  {
-    position: 2, 
-    name: 'Helium', 
-    weight: 4.0026, 
-    symbol: 'He',
-    path: '/productDetail'
-  }
-];
-
-interface Column {
-  field: string;
-  header: string;
-  customExportHeader?: string;
-}
-
-interface ExportColumn {
-  title: string;
-  dataKey: string;
-}
+import { ProductService } from '../../../../e2e/product/product.service';
+import { product } from '../../../../../model/product';
 
 @Component({
   selector: 'app-product-index',
   templateUrl: './product-index.component.html',
   styleUrl: './product-index.component.scss'
 })
-export class ProductIndexComponent {
+export class ProductIndexComponent implements OnInit{
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,private service: ProductService) {
+  }
+  
+  dataSource: product[] = [];
+  displayedColumns: string[] = ['name', 'aliasName', 'description'];
+  errorMessage: string = '';
+
+  ngOnInit(): void {
+    this.getActiveProduct();
+    // this.getProductByID("8beca0a3-dde0-4af4-9197-c669a2ba754f");
+    // this.getActiveProducts();
   }
 
-  dataSource: PeriodicElement[] = ELEMENT_DATA;
-
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-
-  selectedProduct : any;
-  @ViewChild('tableRef') tableRef: ElementRef | undefined;
+  selectedProduct : any;  
   movePage( data : any ): void{
-    this.router.navigate([data.path])
+    this.selectedProduct = data;
+    this.router.navigate(['/productDetail'], { state: {idProduct: data.idProduct } });
   }
-
-  exportColumns!: ExportColumn[];
-  cols!: Column[];
   
 
-  ngOnInit() {
-    this.cols = [
-      {
-        field: 'dataSource.position', header: 'position', customExportHeader: 'position'
+  getActiveProduct():void{
+    this.service.getActiveProducts().subscribe({
+      next: (res) => {
+        this.dataSource = res;
+        // header title - if want to define can use displayedColumns
+        // this.displayedColumns = Object.keys( this.dataSource[0] );
       },
-      {
-        field: 'name', header: 'name', customExportHeader: 'name'
-      },
-      {
-        field: 'weight', header: 'weight', customExportHeader: 'weight'
-      },
-      {
-        field: 'symbol', header: 'symbol', customExportHeader: 'symbol'
-      }
-    ];
-    this.exportColumns = this.cols.map((col) => ({ title: col.header, dataKey: col.field }));
+      error: (err) => this.errorMessage = err
+    });
   }
+
+  // getProductByID(id:any): void {
+  //   this.service.getProductById(id).subscribe({
+  //     next:(res)=>{
+  //       console.log("data By ID", res);
+  //     }
+  //   });
+  // }
+
+  // get all product that are active => GetActiveRefObjectState
+  // getActiveProducts():void {
+  //   this.service.getActiveProducts().subscribe({
+  //     next: (res) =>{
+  //       this.products =res;
+  //       console.log("data active", res);
+  //     },
+  //     error: (err) => this.errorMessage = err
+  //   });
+  // }
 }

@@ -4,6 +4,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { AppModule } from '../../app.config';
+import { LoginService } from '../../e2e/login/login.service';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +14,7 @@ import { AppModule } from '../../app.config';
 export class HeaderComponent implements OnInit {
   @Output() toggleSidebarForMe: EventEmitter<any> = new EventEmitter();
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private loginService: LoginService) {}
 
   ngOnInit(): void {}
 
@@ -23,5 +24,6 @@ export class HeaderComponent implements OnInit {
 
   logout(){
     //end session, remove tokens and reference to login page
+    this.loginService.logout();
   }
 }

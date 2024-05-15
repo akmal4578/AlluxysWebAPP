@@ -56,16 +56,17 @@ button[disabled] {
 
 /* table container for header of the table */
 .header{
-  background-color: #007bff;
   color: #ffffff;
+  background-color: #007bff;
 }
 .header-cell {
   font-size: 16px;
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 10px;
-  text-align: center;
-  border-radius: 20px;
+  text-align: left;
+  border-color: #000000;
+  border: 1px solid rgb(255, 255, 255);
 }
 
 /* table container for body of the table */
@@ -163,4 +164,65 @@ p-sortIcon{
   color: #ffffff;
   border-bottom: 1px solid #ffffff;
   padding: 5px;
+}
+
+.ribbon{
+  height: fit-content;
+  background-color: #007bff;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.ribbon-btn button{
+  margin: 10px 0px 10px 10px;
+  height: 60px;
+  width: 120px;
+  text-align: center;
+  border: 1px solid #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.ribbon-btn button:hover{
+  background-color: #0056b3;
+}
+
+
+.section {
+  margin-bottom: 20px;
+}
+
+.section h2 {
+  text-align: center;
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.grid-item {
+  padding: 10px;
+}
+
+.grid-item img{
+  height: auto;
+  /* max-height: 200px; */
+  width: 15vw;
+  max-width: 200px;
+}
+
+.grid-item-content{
+  gap: 100px;
+}
+
+.grid-item strong {
+  display: block;
+  margin-bottom: 5px;
 }

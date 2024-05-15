@@ -18,11 +18,6 @@ export const menus = [
         menuLink: '/home'
     },
     {
-        menuName: 'Login',
-        description: null,
-        menuLink: '/login'
-    },
-    {
         menuName: 'Product',
         description: null,
         menuLink: '/productIndex'

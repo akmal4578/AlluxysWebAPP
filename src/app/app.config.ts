@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app.routes';
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -18,6 +19,7 @@ import { TableModule } from 'primeng/table';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { ButtonModule } from 'primeng/button';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { SidenavComponent } from './deafult-layout/sidenav/sidenav.component';
 import { HeaderComponent } from './deafult-layout/header/header.component';
@@ -29,6 +31,7 @@ import { ProductDetailComponent } from './view/product/product-detail/product-de
 import { ProductAddProductComponent } from './view/product/product-addProduct/product-add-product/product-add-product.component';
 import { ProductIndexComponent } from './view/product/product-index/product-index/product-index.component';
 import { ProductTerminatedComponent } from './view/product/product-terminated/product-terminated/product-terminated.component';
+
 
 @NgModule({
   declarations: [
@@ -59,6 +62,9 @@ import { ProductTerminatedComponent } from './view/product/product-terminated/pr
     IconFieldModule,
     InputIconModule,
     ButtonModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [
     provideAnimationsAsync()

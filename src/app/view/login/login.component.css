@@ -61,6 +61,13 @@ mat-icon{
     font-size: 20px;
 }
 
+.error{
+    color: red;
+    text-align: center;
+    margin-top: -20px;
+    margin-bottom: 20px;
+}
+
 .wrapper .remember-forgot{
     display: flex;
     justify-content: space-between;
