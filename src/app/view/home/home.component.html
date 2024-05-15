@@ -1,0 +1,15 @@
+<div class="container-fluid page">
+  <div class="d-flex page__box p-3 mt-2">Home</div>
+      <!-- content body -->
+    <div class="container responsive-grid">
+      <div *ngFor="let card of cards">
+        <a class="card" routerLink={{card.menuLink}}>
+          <p class="card-title">{{card.menuName}}</p>
+          <p class="small-desc">{{card.description}}</p>
+          <div class="go-corner">
+            <div class="go-arrow">→</div>
+          </div>
+        </a>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+@import url("../../style/default.css");
+
+.page {
+    color: rgb(255, 255, 255);
+    padding: 0;
+    background: #f1f5f9;
+    width: 100%;
+    &__box {
+      min-height: 120px;
+      background: #1e293b;
+      padding-top: 1rem;
+      padding-bottom: 0rem;
+      padding-left: 1rem;
+      margin:0 0rem;
+      font-size: 36px;
+    }
+  }

@@ -1,0 +1,8 @@
+<mat-nav-list>
+  <div class="logo py-4">
+    <img src="./assets/A-letter-tech-logo.png" alt="Alluxys" />
+  </div>
+  <div class="navigation" *ngFor="let item of items">
+    <a class="mat-list-item" routerLinkActive="list-item-active" routerLink={{item.menuLink}}>{{item.menuName}}</a>
+  </div>
+</mat-nav-list>

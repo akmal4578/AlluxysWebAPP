@@ -1,0 +1,62 @@
+:host {
+  .mat-icon {
+    vertical-align: middle;
+    margin-right: 1rem;
+  }
+}
+.logo {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  img {
+    width: 200px;
+  }
+  background-color: hsl(204, 24%, 99%, 40%) ;
+  border-radius: 8%;
+  margin-bottom: 40px;
+}
+
+.mat-list-item {
+  padding: 15px 30px;
+  border-radius: 20px;
+  color: #ffffff;
+  font-size: 15px;
+  position: relative;
+  overflow: hidden;
+  display: block;
+  text-decoration: none;
+}
+.list-item-active {
+  background-color: hsl(204, 24%, 99%, 40%) ;
+  color: #1e293b;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 8%;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  font-weight: bold;
+}
+.list-item-active::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.25) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  transform: scale(0);
+  transition: transform 0.5s ease;
+}
+
+.list-item-active::after {
+  transform: scale(4);
+}
+
+.list-item-active:hover {
+  border-color: #666666;
+  background: #a19d9d;
+}

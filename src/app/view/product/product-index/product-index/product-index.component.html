@@ -1,0 +1,70 @@
+<div class="container-fluid page">
+    <div class="d-flex page__box p-3 mt-2">Product</div>
+      <div class="container">
+        <div>
+          <p-table 
+            #dt1
+            [columns]="displayedColumns"
+            [value]="dataSource"
+            [paginator]="true"
+            [rows]="10"
+            selectionMode="single" 
+            [(selection)]="selectedProduct"
+            [globalFilterFields]="displayedColumns"
+            [exportHeader]="'customExportHeader'" 
+            [rowsPerPageOptions]="[10, 20, 50, 100, 200]"
+            [showCurrentPageReport]="true"
+            > 
+            <ng-template pTemplate="caption">
+              <div class="caption-container">
+                <div class="export-container">
+                  <button
+                      (click)="dt1.exportCSV()" >
+                      Export
+                  </button>
+                </div>
+
+                <div class="search-container">
+                  <p-iconField iconPosition="left">
+                    <p-inputIcon>
+                      <i class="pi pi-search"></i>
+                    </p-inputIcon>
+                    <input 
+                        pInputText type="text" #inputElement
+                        (input)="dt1.filterGlobal(inputElement.value, 'contains')" 
+                        placeholder="Global Search" 
+                    />
+                  </p-iconField>
+                </div>
+              </div>
+              
+            </ng-template>
+            
+            <ng-template  pTemplate="header">
+              <tr class="header">
+                <th class="header-cell" pSortableColumn={{col}} style="width: 25%;" *ngFor="let col of displayedColumns">
+                  {{col}}
+                  <p-sortIcon field={{col}} />
+                  <p-columnFilter class="columnFilter"  field={{col}} display="menu" />
+                </th>
+              </tr>
+              
+            </ng-template>
+
+            <ng-template pTemplate="body" let-dataSource let-columns="columns">
+              <tr [pSelectableRow]="dataSource" (dblclick)="movePage(dataSource)">
+                <td class="body-cell" *ngFor="let col of displayedColumns"> 
+                  {{ dataSource[col] }}
+                </td>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+              <tr>
+                  <td class="empty-message"  colspan="4">No products found.</td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      </div>
+  </div>
+  
