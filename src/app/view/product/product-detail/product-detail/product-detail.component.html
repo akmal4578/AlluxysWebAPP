@@ -1,72 +1,74 @@
-<div *ngIf="idProduct" class="container-fluid page">
+<div class="container-fluid page">
   <div class="d-flex page__box p-3 mt-2">Product Details</div>
-    <div class="container">
-      <div class="ribbon">
-        <div class="ribbon-btn">
-          <button (click)="back()">
-            Back
-          </button>
-          <button>
-            Edit
-          </button>
-          <button>
-            History
-          </button>
+    <div   class="container">
+      <div *ngIf="idProduct">
+        <div class="ribbon">
+          <div class="ribbon-btn">
+            <button (click)="back()">
+              Back
+            </button>
+            <button>
+              Edit
+            </button>
+            <button>
+              History
+            </button>
+          </div>
         </div>
-      </div>
 
-      <div class="section">
-        <h2>Product Information</h2>
-        <div class="grid-container">
-          <div class="grid-item">
-            <img *ngIf="product!.image" [src]="'data:image/png;base64,'+product!.image" alt="{{product!.name}} Image">
-          </div>
-          <div [hidden]="true" class="grid-item">
-            <strong>Product ID:</strong> {{ product!.idProduct }}
-          </div>
-          <div class="grid-item">
-            <div class="grid-item-content">
-              <div class="grid-item">
-                <strong>Product Name:</strong> {{ product!.name }}
-              </div >
-              <div class="grid-item">
-                <strong>Alias Name:</strong> {{ product!.aliasName }}
-              </div>
-              <div class="grid-item">
-                <strong>Description:</strong> {{ product!.description }}
+        <div class="section">
+          <h2>Product Information</h2>
+          <div class="grid-container">
+            <div class="grid-item">
+              <img *ngIf="product!.image" [src]="'data:image/png;base64,'+product!.image" alt="{{product!.name}} Image">
+            </div>
+            <div [hidden]="true" class="grid-item">
+              <strong>Product ID:</strong> {{ product!.idProduct }}
+            </div>
+            <div class="grid-item">
+              <div class="grid-item-content">
+                <div class="grid-item">
+                  <strong>Product Name:</strong> {{ product!.name }}
+                </div >
+                <div class="grid-item">
+                  <strong>Alias Name:</strong> {{ product!.aliasName }}
+                </div>
+                <div class="grid-item">
+                  <strong>Description:</strong> {{ product!.description }}
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    
-      <!-- Settings Section -->
-      <div class="section">
-        <h2>Administration</h2>
-        <div class="grid-container">
-          <div  class="grid-item">
-            <strong>Created By User ID:</strong> {{ product!.idUserCreatedBy ? product!.idUserCreatedBy : 'N/A' }}
-          </div>
-          <div class="grid-item">
-            <strong>Created Date:</strong> {{ product!.createdDate ? (product!.createdDate | date:'medium') : 'N/A' }}
-          </div>
-          <div class="grid-item">
-            <strong>Updated By User ID:</strong> {{ product!.idUserUpdatedBy ? product!.idUserUpdatedBy : 'N/A' }}
-          </div>
-          <div class="grid-item">
-            <strong>Updated Date:</strong> {{ product!.updatedDate ? (product!.updatedDate | date:'medium') : 'N/A' }}
+      
+        <!-- Settings Section -->
+        <div class="section">
+          <h2>Administration</h2>
+          <div class="grid-container">
+            <div  class="grid-item">
+              <strong>Created By User ID:</strong> {{ product!.idUserCreatedBy ? product!.idUserCreatedBy : 'N/A' }}
+            </div>
+            <div class="grid-item">
+              <strong>Created Date:</strong> {{ product!.createdDate ? (product!.createdDate | date:'medium') : 'N/A' }}
+            </div>
+            <div class="grid-item">
+              <strong>Updated By User ID:</strong> {{ product!.idUserUpdatedBy ? product!.idUserUpdatedBy : 'N/A' }}
+            </div>
+            <div class="grid-item">
+              <strong>Updated Date:</strong> {{ product!.updatedDate ? (product!.updatedDate | date:'medium') : 'N/A' }}
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Other Section -->
-      <div class="section">
-        <h2>Other</h2>
-        <div class="grid-container">
-          <div class="grid-item">
-            <strong>Reference Object State ID:</strong> {{ product!.idRefObjectState }}
+        <!-- Other Section -->
+        <div class="section">
+          <h2>Other</h2>
+          <div class="grid-container">
+            <div class="grid-item">
+              <strong>Reference Object State ID:</strong> {{ product!.idRefObjectState }}
+            </div>
           </div>
         </div>
-      </div>
+    </div>
     </div>
 </div>

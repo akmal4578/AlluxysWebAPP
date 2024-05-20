@@ -20,6 +20,7 @@ import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { ButtonModule } from 'primeng/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DialogModule } from 'primeng/dialog';
 
 import { SidenavComponent } from './deafult-layout/sidenav/sidenav.component';
 import { HeaderComponent } from './deafult-layout/header/header.component';
@@ -65,6 +66,7 @@ import { ProductTerminatedComponent } from './view/product/product-terminated/pr
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    DialogModule,
   ],
   providers: [
     provideAnimationsAsync()

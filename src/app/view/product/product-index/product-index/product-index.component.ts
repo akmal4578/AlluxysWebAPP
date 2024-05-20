@@ -1,7 +1,8 @@
-import { Component, ElementRef, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, Injector, OnInit, Output, ViewChild, StaticProvider  } from '@angular/core';
 import { Router } from '@angular/router'; 
 import { ProductService } from '../../../../e2e/product/product.service';
 import { product } from '../../../../../model/product';
+import { ProductAddProductComponent } from '../../product-addProduct/product-add-product/product-add-product.component';
 
 @Component({
   selector: 'app-product-index',
@@ -10,8 +11,21 @@ import { product } from '../../../../../model/product';
 })
 export class ProductIndexComponent implements OnInit{
 
+  injector: Injector;
+  displayDialog: boolean = false;
+  productAddComponent = ProductAddProductComponent;
+
+
   constructor(
-    private router: Router,private service: ProductService) {
+    private router: Router,private service: ProductService, private parentInjector: Injector) {
+      const providers: StaticProvider[] = [
+      { provide: 'closeDialog', useValue: () => this.hideDialog() }
+    ];
+
+    this.injector = Injector.create({
+      providers: providers,
+      parent: this.parentInjector
+    });
   }
   
   dataSource: product[] = [];
@@ -24,13 +38,23 @@ export class ProductIndexComponent implements OnInit{
     // this.getActiveProducts();
   }
 
+  // add new product
+  showDialog() {
+    this.displayDialog = true;
+  }
+
+  hideDialog() {
+    this.displayDialog = false;
+  }
+
+  // redirect based on table
   selectedProduct : any;  
   movePage( data : any ): void{
     this.selectedProduct = data;
     this.router.navigate(['/productDetail'], { state: {idProduct: data.idProduct } });
   }
   
-
+  // API implementation
   getActiveProduct():void{
     this.service.getActiveProducts().subscribe({
       next: (res) => {

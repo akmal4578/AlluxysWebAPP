@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Inject, Optional, Output } from '@angular/core';
+import { ProductIndexComponent } from '../../product-index/product-index/product-index.component';
 
 @Component({
   selector: 'app-product-add-product',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class ProductAddProductComponent {
 
+
+  constructor (@Optional() @Inject('closeDialog') public closeDialog: () => void){
+
+  }
+
+  onClose() {
+    this.closeDialog();
+  }
 }

@@ -3,7 +3,7 @@
       <div class="container">
         <div class="ribbon">
           <div class="ribbon-btn">
-            <button>
+            <button (click)="showDialog()">
               Add
             </button>
             <button>
@@ -73,5 +73,11 @@
             </tr>
           </ng-template>
         </p-table>
+
+        <p-dialog header="Add Product" [(visible)]="displayDialog" [modal]="true" [closable]="true" [baseZIndex]="10000">
+          <ng-template pTemplate="content">
+            <ng-container *ngComponentOutlet="productAddComponent; injector: injector;"></ng-container>
+          </ng-template>
+        </p-dialog>
       </div>
   </div>
